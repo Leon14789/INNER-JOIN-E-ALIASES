@@ -1,0 +1,36 @@
+create table Cities (
+  id int primary key,
+  name varchar(60) not null,
+  population int
+);
+
+create table Alunos (
+  id int primary key,
+  name varchar(60) not null,
+  data_nasc date,
+  cidade_id int,
+  foreign key(cidade_id) references Cities(id)
+);
+
+-- Inserir 5 cidades na tabela Cities com IDs a partir de 6
+INSERT INTO Cities (id, name, population) VALUES
+  (6, 'Cidade F', 110000),
+  (7, 'Cidade G', 130000),
+  (8, 'Cidade H', 75000),
+  (9, 'Cidade I', 105000),
+  (10, 'Cidade J', 92000);
+
+-- Inserir 10 alunos na tabela Alunos
+INSERT INTO Alunos (id, name, data_nasc, cidade_id) VALUES
+  (11, 'Aluno 11', '2000-01-15', 6),
+  (12, 'Aluno 12', '2001-03-20', 8),
+  (13, 'Aluno 13', '1999-05-10', 7),
+  (14, 'Aluno 14', '2002-07-25', 9),
+  (15, 'Aluno 15', '1998-09-05', 10),
+  (16, 'Aluno 16', '2003-11-12', 6),
+  (17, 'Aluno 17', '2000-02-08', 8),
+  (18, 'Aluno 18', '2001-04-30', 7),
+  (19, 'Aluno 19', '2002-06-14', 9),
+  (20, 'Aluno 20', '1999-08-22', 10);
+SELECT * FROM Alunos INNER JOIN Cities ON Cities.id = Alunos.cidade_id;
+
